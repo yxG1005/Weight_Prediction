@@ -204,51 +204,58 @@ if args.is_training:
             print('>>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))
             exp.test(setting)
 
-        if args.do_predict:
-            print('>>>>>>>predicting : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))
-            exp.predict(setting, True)
+
 
         torch.cuda.empty_cache()
 else:
     ii = 0
-    if args.fusion == "NO":
-        #NLinear
-        setting = '{}_f{}_s{}_p{}_sca_ins{}_food_{}{}{}'.format(
+    if args.model == "NLinear":
+        setting = '{}_f{}_s{}_p{}_food_{}{}{}_l_{}'.format(
             args.model,
             args.features,
             args.seq_len,
             args.pred_len,
-            args.scale,
             args.breakfast,
             args.lunch,
-            args.supper)
+            args.supper,
+            args.lamda)
         if args.features == "S":
-            setting = '{}_f{}_s{}_p{}_sca_ins{}'.format(
+            setting = '{}_f{}_s{}_p{}'.format(
+                args.model,
+                args.features,
+                args.seq_len,
+                args.pred_len)   
+    
+    
+    # iTransformer or PatchTST
+    elif args.model == "iTransformer" or args.model == "PatchTST":
+        setting = '{}_f{}_s{}_p{}_depth{}_d_model{}_nhead{}_dff{}_food_{}{}{}_l_{}'.format(
+            args.model,
+            args.features,
+            args.seq_len,
+            args.pred_len,
+            args.e_layers,
+            args.d_model,
+            args.n_heads,
+            args.d_ff,
+            args.breakfast,
+            args.lunch,
+            args.supper,
+            args.lamda)
+        if args.features == "S":
+            setting = '{}_f{}_s{}_p{}_depth{}_d_model{}_nhead{}_dff{}'.format(
                 args.model,
                 args.features,
                 args.seq_len,
                 args.pred_len,
-                args.scale) 
-
-        #iTransformer
-        # setting = '{}_f{}_s{}_p{}_sca_ins{}_depth{}_d_model{}_nhead{}_food_{}{}{}'.format(
-        #     args.model,
-        #     args.features,
-        #     args.seq_len,
-        #     args.pred_len,
-        #     args.scale,
-        #     args.e_layers,
-        #     args.d_model,
-        #     args.n_heads,
-        #     args.breakfast,
-        #     args.lunch,
-        #     args.supper)
+                args.e_layers,
+                args.d_model,
+                args.n_heads,
+                args.d_ff)              
+         
         exp = Exp(args)  # set experiments
 
-        if args.do_predict:
-            print('>>>>>>>predicting : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))
-            exp.predict(setting, True)
-        else:
-            print('>>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))
-            exp.test(setting, test=1)
+
+        print('>>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))
+        exp.test(setting, test=1)
         torch.cuda.empty_cache()
