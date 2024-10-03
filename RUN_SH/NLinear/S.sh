@@ -1,10 +1,8 @@
  
-seq_lens='3'
-pred_lens='3'
+seq_lens='3 5 7'
+pred_lens='3 5 7'
 model_name="NLinear"
 features="S"
-profile=0
-scale=0
 breakfast=1
 lunch=1
 supper=1
@@ -37,21 +35,16 @@ do
         --data_path data.csv \
         --model_id weight \
         --model $model_name \
-        --data weight \
         --features  $features\
-        --variation 0\
         --image 0\
         --text 0\
         --fusion "NO" \
         --breakfast $breakfast\
         --lunch $lunch\
         --supper $supper\
-        --scale $scale\
         --seq_len $seq_len \
         --pred_len $pred_len \
-        --enc_in 2 \
-        --des 'Exp' \
-        --checkpoints "/share/ckpt/yxgui/LTSF-CKPT/NLinear/S" \
+        --checkpoints "NLinear/S" \
         --itr 1 --batch_size 32 --learning_rate 0.005 >logs/NLinear/S/$model_name'_'weight_$seq_len'_'$pred_len'_'$features.log
         echo "Job submitted for pred_len=$pred_len"
     done

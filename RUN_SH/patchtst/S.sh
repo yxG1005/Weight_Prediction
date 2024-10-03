@@ -1,10 +1,8 @@
 
-seq_lens="3"
-pred_lens="3 "
+seq_lens="3 5"
+pred_lens="3 5"
 model_name="PatchTST"
 features="S"
-profile=0
-scale=0
 
 e_layers=1
 d_model=16
@@ -33,33 +31,27 @@ fi
 # Loop through lamda values
 for seq_len in $seq_lens
 do
-    echo "Running with seq_len=$seq_len"
     for pred_len in $pred_lens
     do
+        echo "Running with seq_len=$seq_len pred_len=$pred_len"
         python -u run_longExp.py \
             --is_training 1 \
             --root_path ./dataset/ \
             --data_path data.csv \
             --model_id weight \
             --model $model_name \
-            --data weight \
             --features $features \
-            --variation 0\
             --image 1\
             --text 0\
             --fusion "NO" \
             --breakfast $breakfast\
             --lunch $lunch\
             --supper $supper\
-            --scale $scale\
             --seq_len $seq_len \
             --pred_len $pred_len \
             --e_layers $e_layers \
             --n_heads $heads \
             --enc_in 1 \
-            --dec_in 1 \
-            --c_out 7 \
-            --des 'Exp' \
             --d_model $d_model\
             --d_ff $d_ff \
             --dropout 0.2\
@@ -67,8 +59,8 @@ do
             --head_dropout 0\
             --patch_len 3\
             --stride 1\
-            --checkpoints "/share/ckpt/yxgui/LTSF-CKPT/PatchTST/S" \
-            --itr 1 --batch_size 32 --learning_rate 0.005 >logs/PatchTST/S/$model_name'_'weight_$seq_len'_'$pred_len'_'$features'_ins_scal_'$scale'_depth_'$e_layers'_d_model'$d_model'_nhead'$h'd_ff'$d_ff.log
+            --checkpoints "PatchTST/S" \
+            --itr 1 --batch_size 32 --learning_rate 0.005 >logs/PatchTST/S/$model_name'_'weight_$seq_len'_'$pred_len'_'$features'_depth_'$e_layers'_d_model'$d_model'_nhead'$h'd_ff'$d_ff.log
         
         echo "Job submitted for pred_len = $pred_len"
     done

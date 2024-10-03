@@ -17,19 +17,16 @@ class UMRL(nn.Module):
     """
     def __init__(self, configs):
         super(UMRL, self).__init__()
-        # self.seq_len = configs.seq_len
-        # self.pred_len = configs.pred_len
         self.food_individual = configs.food_individual
         self.breakfast = configs.breakfast
         self.lunch = configs.lunch
         self.supper = configs.supper
-        self.meal_num = [self.breakfast, self.lunch, self.supper].count(1)#有几餐参与训练
-        print("有几餐参与训练",self.meal_num)
+        self.meal_num = [self.breakfast, self.lunch, self.supper].count(1)
+        print("number of meals",self.meal_num)
 
         if self.food_individual:
-            print("individual")
             self.food_linear = nn.ModuleList()
-            for i in range(self.meal_num):#三餐中有几餐参与训练
+            for i in range(self.meal_num):
                 self.food_linear.append(nn.Linear(512, 1))
         else:
             self.food_linear = nn.Linear(512, 1)
@@ -44,17 +41,13 @@ class UMRL(nn.Module):
 
         
         if self.food_individual: 
-            # print("food_individual")
             for i in range(self.meal_num):       
-                # print("meal_list[{}]".format(i), meal_list[i].shape)
                 output[:,:,i:i+1] = self.food_linear[i](meal_list[i])#[32,seq_len,1]
 
         else:
             for i in range(self.meal_num):     
-                # print("meal_list[{}]".format(i), meal_list[i].shape)
                 output[:,:,i:i+1] = self.food_linear(meal_list[i])#[32,seq_len,1]
-                # print("output[:,:,i:i+1]", output[:,:,i:i+1])
-        # print("food_output.shape", output, output.shape)
+
         return output
     
 
@@ -84,7 +77,7 @@ class Model(nn.Module):
         stride = configs.stride
         padding_patch = configs.padding_patch
         
-        revin = configs.revin#是否标准化1/0
+        revin = configs.revin
         affine = configs.affine
         subtract_last = configs.subtract_last
         
@@ -93,9 +86,7 @@ class Model(nn.Module):
 
         self.image = configs.image
         self.text = configs.text
-        self.variation = configs.variation
         self.features = configs.features
-        self.mix_variation = configs.mix_variation
         self.fusion = configs.fusion
  
         
@@ -135,17 +126,10 @@ class Model(nn.Module):
     def forward(self, x):           # x: [Batch, Input length, Channel]
 
         if (self.features == "M" and self.image) or (self.features == "M" and self.text):
-            weight = x[:, :, -1:]#体重部分
-
+            weight = x[:, :, -1:]
             food_output = self.food_mapping(x)
 
-            if self.variation:
-                variation = x[:, :, -2:-1]
-                x = torch.cat((food_output, variation, weight), axis=2)
-
-            #将食物mapping后的output和weight concat在一起
-            else:
-                x = torch.cat((food_output, weight), axis=2)
+            x = torch.cat((food_output, weight), axis=2)
 
 
         if self.decomposition:
@@ -156,7 +140,6 @@ class Model(nn.Module):
             x = res + trend
             x = x.permute(0,2,1)    # x: [Batch, Input length, Channel]
         else:
-            print("x", x.shape)
             x = x.permute(0,2,1)    # x: [Batch, Channel, Input length]
             x = self.model(x)
             x = x.permute(0,2,1)    # x: [Batch, Input length, Channel]

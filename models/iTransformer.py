@@ -12,19 +12,16 @@ class UMRL(nn.Module):
     """
     def __init__(self, configs):
         super(UMRL, self).__init__()
-        # self.seq_len = configs.seq_len
-        # self.pred_len = configs.pred_len
         self.food_individual = configs.food_individual
         self.breakfast = configs.breakfast
         self.lunch = configs.lunch
         self.supper = configs.supper
         self.meal_num = [self.breakfast, self.lunch, self.supper].count(1)#有几餐参与训练
-        print("有几餐参与训练",self.meal_num)
+        print("number of meals",self.meal_num)
 
         if self.food_individual:
-            print("individual")
             self.food_linear = nn.ModuleList()
-            for i in range(self.meal_num):#三餐中有几餐参与训练
+            for i in range(self.meal_num):
                 self.food_linear.append(nn.Linear(512, 1))
         else:
             self.food_linear = nn.Linear(512, 1)
@@ -33,23 +30,18 @@ class UMRL(nn.Module):
 
         meal_list = []
         for i in range(self.meal_num):
-            meal_list.append(x[:, :, i*512: (i+1)*512])#每一餐都是 [32,seq_len,512]
+            meal_list.append(x[:, :, i*512: (i+1)*512])
 
         output = torch.zeros([x.size(0), x.size(1), self.meal_num],dtype=x.dtype).to(x.device)#[32,seq_len,meal_num]
 
         
         if self.food_individual: 
-            # print("food_individual")
             for i in range(self.meal_num):       
-                # print("meal_list[{}]".format(i), meal_list[i].shape)
                 output[:,:,i:i+1] = self.food_linear[i](meal_list[i])#[32,seq_len,1]
 
         else:
             for i in range(self.meal_num):     
-                # print("meal_list[{}]".format(i), meal_list[i].shape)
                 output[:,:,i:i+1] = self.food_linear(meal_list[i])#[32,seq_len,1]
-                # print("output[:,:,i:i+1]", output[:,:,i:i+1])
-        # print("food_output.shape", output, output.shape)
         return output
     
 
@@ -64,16 +56,13 @@ class Model(nn.Module):
         self.pred_len = configs.pred_len
         self.image = configs.image
         self.text = configs.text
-        self.variation = configs.variation
         self.features = configs.features
-        self.mix_variation = configs.mix_variation
         self.fusion = configs.fusion
 
         self.output_attention = configs.output_attention
         # Embedding
         self.enc_embedding = DataEmbedding_inverted(configs.seq_len, configs.d_model, configs.embed, configs.freq,
                                                     configs.dropout)
-        # self.class_strategy = configs.class_strategy
         # Encoder-only architecture
         self.encoder = Encoder(
             [
@@ -96,24 +85,11 @@ class Model(nn.Module):
 
     def forecast(self, x_enc, x_mark_enc):
         if (self.features == "M" and self.image) or (self.features == "M" and self.text):
-            weight = x_enc[:, :, -1:]#体重部分
+            weight = x_enc[:, :, -1:]
 
             food_output = self.food_mapping(x_enc)
+            x_enc = torch.cat((food_output, weight), axis=2)
 
-            if self.variation:
-                variation = x_enc[:, :, -2:-1]
-                x_enc = torch.cat((food_output, variation, weight), axis=2)
-
-            #将食物mapping后的output和weight concat在一起
-            else:
-                x_enc = torch.cat((food_output, weight), axis=2)
-
-            # #将食物mapping后的output和weight concat在一起
-            # x_enc = torch.cat((food_output, weight), axis=2)
-            # print("加入食物输入网络的形状", weight, weight.shape)#检查   
-
-            
-        # print("x_enc", x_enc)
         # Normalization from Non-stationary Transformer
         means = x_enc.mean(1, keepdim=True).detach()
         x_enc = x_enc - means

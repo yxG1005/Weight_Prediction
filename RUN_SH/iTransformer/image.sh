@@ -1,9 +1,8 @@
-lamda=1
+lamda=0.25
 seq_lens="3"
-pred_lens="3"
+pred_lens="7"
 model_name="iTransformer"
 features="M"
-scale=0
 
 e_layers=1
 d_model=16
@@ -32,38 +31,31 @@ fi
 # Loop through lamda values
 for seq_len in $seq_lens
 do
-    echo "Running with breakfast=$breakfast  lunch=$lunch  supper=$supper"
     for pred_len in $pred_lens
     do
+        echo "Running with seq_len=$seq_len pred_len=$pred_len"
         python -u run_longExp.py \
             --is_training 1 \
             --root_path ./dataset/ \
             --data_path data.csv \
             --model_id weight \
             --model $model_name \
-            --data weight \
             --features $features \
-            --variation 0\
             --image 1\
             --text 0\
             --fusion "NO" \
             --breakfast $breakfast\
             --lunch $lunch\
             --supper $supper\
-            --scale $scale\
             --seq_len $seq_len \
             --pred_len $pred_len \
             --e_layers $e_layers \
             --n_heads $heads \
-            --enc_in 7 \
-            --dec_in 862 \
-            --c_out 7 \
-            --des 'Exp' \
             --d_model $d_model\
             --d_ff $d_ff \
             --lamda $lamda \
-            --checkpoints "/share/ckpt/yxgui/LTSF-CKPT/iTransformer/img" \
-            --itr 1 --batch_size 32 --learning_rate 0.005 >./logs/iTransformer/img/$model_name'_'weight_$seq_len'_'$pred_len'_'$features'_ins_scal_'$scale'_depth_'$e_layers'_d_model'$d_model'_nhead'$heads"_"'d_ff_'$d_ff'_'$breakfast$lunch$supper'_l_'$lamda.log
+            --checkpoints "iTransformer/img" \
+            --itr 1 --batch_size 32 --learning_rate 0.005 >./logs/iTransformer/img/$model_name'_'weight_$seq_len'_'$pred_len'_'$features'_depth_'$e_layers'_d_model'$d_model'_nhead'$heads"_"'d_ff_'$d_ff'_'$breakfast$lunch$supper'_l_'$lamda.log
         
     done
 done

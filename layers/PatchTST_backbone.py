@@ -59,7 +59,6 @@ class PatchTST_backbone(nn.Module):
         
     
     def forward(self, z):                                                               # z: [bs x nvars x seq_len]
-        print("z2", z.shape)
         # norm
         if self.revin: 
             z = z.permute(0,2,1)
@@ -69,7 +68,6 @@ class PatchTST_backbone(nn.Module):
         # do patching
         if self.padding_patch == 'end':
             z = self.padding_patch_layer(z)
-        print("z3", z.shape)
         z = z.unfold(dimension=-1, size=self.patch_len, step=self.stride)                   # z: [bs x nvars x patch_num x patch_len]
         z = z.permute(0,1,3,2)                                                              # z: [bs x nvars x patch_len x patch_num]
         
@@ -82,7 +80,6 @@ class PatchTST_backbone(nn.Module):
             z = z.permute(0,2,1)
             z = self.revin_layer(z, 'denorm')
             z = z.permute(0,2,1)
-        print("z4, ",z.shape)
         return z
     
     def create_pretrain_head(self, head_nf, vars, dropout):
@@ -161,7 +158,6 @@ class TSTiEncoder(nn.Module):  #i means channel-independent
     def forward(self, x) -> Tensor:                                              # x: [bs x nvars x patch_len x patch_num]
         
         n_vars = x.shape[1]
-        print("n_vars", n_vars)
         # Input encoding
         x = x.permute(0,1,3,2)                                                   # x: [bs x nvars x patch_num x patch_len]
         x = self.W_P(x)                                                          # x: [bs x nvars x patch_num x d_model]
