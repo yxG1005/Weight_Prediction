@@ -1,0 +1,7 @@
+einops==0.8.0
+matplotlib==3.5.1
+numpy==1.22.0
+pandas==1.4.2
+Pillow==9.0.1
+reformer_pytorch==1.4.4
+torch==2.1.2
