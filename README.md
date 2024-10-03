@@ -5,11 +5,34 @@ This repo is the official implementation for the paper: [Navigating weight predi
 Current research in food analysis primarily concentrates on tasks such as food recognition, recipe retrieval and nutrition estimation from a single image. Nevertheless, there is a significant gap in exploring the impact of food intake on physiological indicators (e.g., weight) over time. This paper addresses this gap by introducing the **DietDiary** dataset, which encompasses daily dietary diaries and corresponding weight measurements of real users. Furthermore, we propose a novel task of weight prediction with a dietary diary that aims to leverage historical food intake and weight to predict future weights.
 
 ## Dataset Overview
-We introduce a novel dataset, **DietDiary**, specifically for analyzing weight in relation to food intake. DietDiary encompasses diet diary of three meals over a period of time, accompanied by daily weight measurement. This example shows data records for two participants with different weight fluctuation trends in DietDiary. The records leading to weight gain are highlighted in red.
+We introduce a novel dataset, **DietDiary**, specifically for analyzing weight in relation to food intake. DietDiary encompasses diet diary of three meals over a period of time, accompanied by daily weight measurement. This example shows data records for two participants with different weight fluctuation trends in DietDiary. The records leading to weight gain are highlighted in red. The dataset is publicly available at [Google Drive](https://drive.google.com/drive/folders/1XYkdJAlY-PIPd3MQWNnX9jlOvOs2RZ36?usp=sharing) now.
 ![](.//pics//dataset-example.png)
 
-## Access DietDiary
-Get the DietDiary dataset from [https://drive.google.com/drive/folders/1XYkdJAlY-PIPd3MQWNnX9jlOvOs2RZ36?usp=sharing](https://drive.google.com/drive/folders/1XYkdJAlY-PIPd3MQWNnX9jlOvOs2RZ36?usp=sharing)
-
 ## Getting Started
+1. Install [Pytorch](https://pytorch.org/get-started/locally/), [CLIP](https://github.com/openai/CLIP) and necessary dependencies.
+```python
+pip install -r requirements.txt
+```
 
+2. Data Preparation
+step1. Open the  [Google Drive](https://drive.google.com/drive/folders/1XYkdJAlY-PIPd3MQWNnX9jlOvOs2RZ36?usp=sharing) and download files as following:
+```python
+Weight_Prediction
+├── dataset
+│   ├── data.csv
+│   ├── predict_ingr.json
+```
+The above two documents are already included in this repo.  **data.csv** contains all food and weight measurement records.  **predict_ingr.json** contains a dictionary that maps images to the ingredients predicted by ingredients prediction model.
+
+```python
+feature path
+├── LTSF-img-npy              #image feature of different setting
+├── LTSF-txt-npy              #ingredients(from users) feature of different setting
+├── LTSF-txt-from-img-npy     #ingredients(from ingredients prediction model) feature of different setting
+```
+Please download three above feature documents to your own address, and change the *--feature_path* in **run_longExp.py** as your feature path.
+
+```python
+your image path
+├── DietDiary.zip
+```
