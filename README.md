@@ -1,5 +1,7 @@
-# Weight-Prediction
+# Navigating weight prediction with diet diary
 Official implementation for "Navigating Weight Prediction with Diet Diary" (MM 2024 Oral)
+
+## Dataset Overview
 
 ## Usage 
 1. The dataset will be released soon! 
