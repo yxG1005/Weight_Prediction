@@ -9,13 +9,14 @@ We introduce a novel dataset, **DietDiary**, specifically for analyzing weight i
 ![](.//pics//dataset-example.png)
 
 ## Getting Started
-1. Install [Pytorch](https://pytorch.org/get-started/locally/), [CLIP](https://github.com/openai/CLIP) and necessary dependencies.
+### 1. Install
+Install [Pytorch](https://pytorch.org/get-started/locally/), [CLIP](https://github.com/openai/CLIP) and necessary dependencies.
 ```python
 pip install -r requirements.txt
 ```
 
-2. Data Preparation
-step1. Open the  [Google Drive](https://drive.google.com/drive/folders/1XYkdJAlY-PIPd3MQWNnX9jlOvOs2RZ36?usp=sharing) and download files as following:
+### 2. Data Preparation
+Open the  [Google Drive](https://drive.google.com/drive/folders/1XYkdJAlY-PIPd3MQWNnX9jlOvOs2RZ36?usp=sharing) and download files as following:
 ```python
 Weight_Prediction
 ├── dataset
