@@ -85,4 +85,4 @@ If you find this repository useful for your work, please consider citing it as f
 ```
 
 ## Acknowlegement
-We sincerely thank the authors of [NLinear](https://github.com/cure-lab/LTSF-Linear), [iTransformer](https://github.com/thuml/iTransformer) and [PatchTST](https://github.com/yuqinie98/PatchTST) for their valuable code and efforts.
+We sincerely thank the authors of [NLinear](https://github.com/cure-lab/LTSF-Linear), [iTransformer](https://github.com/thuml/iTransformer), [PatchTST](https://github.com/yuqinie98/PatchTST) and [FoodLMM](https://github.com/YuehaoYin/FoodLMM) for their valuable code and efforts.
