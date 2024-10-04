@@ -53,13 +53,13 @@ To train and evaluate the *NLinear* model with diet information:
 # NLinear model with diet information from images
 sh RUN_SH/NLinear/image.sh
 
-# NLinear model with diet information from ingredients-users
+# NLinear model with diet information from ingredients(users)
 sh RUN_SH/NLinear/text.sh
 
-# NLinear model with diet information from ingredients-LMM
+# NLinear model with diet information from ingredients(ingredients prediction model)
 sh RUN_SH/NLinear/lmm.sh
 
-# NLinear model with diet information from both images and ingredients-users
+# NLinear model with diet information from both images and ingredients(users)
 sh RUN_SH/NLinear/txt_img_early_fusion.sh
 ```
 
@@ -70,7 +70,19 @@ sh RUN_SH/NLinear/txt_img_early_fusion.sh
 
 ## Results
 Compared to models that do not incorporate food intake information, our method consistently achieves superior performance over NLinear and iTransformer across all evaluated settings.
-![](.//pics//exp-result-NLinear.png)
-![](.//pics//exp-result-iTransformer.png)
 
+![](.//pics//exp-result.png)
 
+## Citation
+If you find this repository useful for your work, please consider citing it as follows:
+```python
+@article{gui2024navigating,
+  title={Navigating Weight Prediction with Diet Diary},
+  author={Gui, Yinxuan and Zhu, Bin and Chen, Jingjing and Ngo, Chong-Wah and Jiang, Yu-Gang},
+  journal={arXiv preprint arXiv:2408.05445},
+  year={2024}
+}
+```
+
+## Acknowlegement
+We sincerely thank the authors of [NLinear](https://github.com/cure-lab/LTSF-Linear), [iTransformer](https://github.com/thuml/iTransformer) and [PatchTST](https://github.com/yuqinie98/PatchTST) for their valuable code and efforts.
