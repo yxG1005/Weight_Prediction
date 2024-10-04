@@ -23,17 +23,18 @@ Weight_Prediction
 │   ├── data.csv
 │   ├── predict_ingr.json
 ```
-The above two documents are already included in this repo.  **data.csv** contains all food and weight measurement records.  **predict_ingr.json** contains a dictionary that maps images to the ingredients predicted by ingredients prediction model.
+The above two documents are already included in this repo.  
 
 ```python
 feature path
-├── LTSF-img-npy              #image feature of different setting
-├── LTSF-txt-npy              #ingredients(from users) feature of different setting
-├── LTSF-txt-from-img-npy     #ingredients(from ingredients prediction model) feature of different setting
+├── LTSF-img-npy              #image feature of different settings
+├── LTSF-txt-npy              #ingredients(from users) feature of different settings
+├── LTSF-txt-from-img-npy     #ingredients(from ingredients prediction model) feature of different settings
 ```
-Please download three above feature documents to your own address, and change the *--feature_path* in **run_longExp.py** as your feature path.
+Please download the three feature documents mentioned above to your directory, and update the *--feature_path* argument in **run_longExp.py** to your feature path.
 
 ```python
-your image path
+image path
 ├── DietDiary.zip
 ```
+Please download and unzip the DietDiary dataset to your directory, and update the *--image_root* argument in **run_longExp.py** to your image path.
