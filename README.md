@@ -29,7 +29,7 @@ Please download and unzip the DietDiary.zip to your directory, and update the *-
 ```python
 mkdir ./features
 ```
-If do not download, the code will create ./feature automatically and extract and save feature to this path.
+If do not download, the code will create `./feature` automatically and extract features, and then save them to this path.
 
 ### 3. Training and Evaluation
 We provide implementation of *NLienar/iTransformer/PatchTST* under the folder `./RUN_SH/`. You can reproduce the results as the following examples. Logs will be stored in `logs/`. Prediction results wiil be stored in `results/`.
