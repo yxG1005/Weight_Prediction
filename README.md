@@ -44,7 +44,21 @@ We provide implementation of *NLienar/iTransformer/PatchTST* under the folder `.
 
 To train and evaluate the baseline *iTransformer* model:
 ```python
-bash RUN_SH/iTransformer/S.sh
+sh RUN_SH/iTransformer/S.sh
+```
+To train and evaluate the *NLinear* model with diet information:
+```python
+# NLinear model with diet information from images
+sh RUN_SH/NLinear/image.sh
+
+# NLinear model with diet information from ingredients-users
+sh RUN_SH/NLinear/text.sh
+
+# NLinear model with diet information from ingredients-LMM
+sh RUN_SH/NLinear/lmm.sh
+
+# NLinear model with diet information from both images and ingredients-users
+sh RUN_SH/NLinear/txt_img_early_fusion.sh
 ```
 
 
