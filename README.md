@@ -38,3 +38,14 @@ image path
 ├── DietDiary.zip
 ```
 Please download and unzip the DietDiary dataset to your directory, and update the *--image_root* argument in **run_longExp.py** to your image path.
+
+### 3. Training and Evaluation
+We provide implementation of *NLienar/iTransformer/PatchTST* under the folder `./RUN_SH/`. You can reproduce the results as the following examples.
+
+To train and evaluate the baseline *iTransformer* model:
+```python
+bash RUN_SH/iTransformer/S.sh
+```
+
+
+
