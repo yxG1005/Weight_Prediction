@@ -21,7 +21,7 @@ if [ ! -d "./logs/NLinear/S" ]; then
     mkdir ./logs/NLinear/S
 fi
 
-# Loop through lamda values
+
 for seq_len in $seq_lens
 do
     echo "Running with seq_len=$seq_len"

@@ -1,4 +1,4 @@
-lamda=0.25
+Lambda=0.25
 seq_lens="3"
 pred_lens="7"
 model_name="iTransformer"
@@ -28,7 +28,7 @@ if [ ! -d "./logs/iTransformer/img" ]; then
     mkdir ./logs/iTransformer/img
 fi
 
-# Loop through lamda values
+# Loop through Lambda values
 for seq_len in $seq_lens
 do
     for pred_len in $pred_lens
@@ -53,9 +53,9 @@ do
             --n_heads $heads \
             --d_model $d_model\
             --d_ff $d_ff \
-            --lamda $lamda \
+            --Lambda $Lambda \
             --checkpoints "iTransformer/img" \
-            --itr 1 --batch_size 32 --learning_rate 0.005 >./logs/iTransformer/img/$model_name'_'weight_$seq_len'_'$pred_len'_'$features'_depth_'$e_layers'_d_model'$d_model'_nhead'$heads"_"'d_ff_'$d_ff'_'$breakfast$lunch$supper'_l_'$lamda.log
-        
+            --itr 1 --batch_size 32 --learning_rate 0.005 >./logs/iTransformer/img/$model_name'_'weight_$seq_len'_'$pred_len'_'$features'_depth_'$e_layers'_d_model'$d_model'_nhead'$heads"_"'d_ff_'$d_ff'_'$breakfast$lunch$supper'_l_'$Lambda.log
+        echo "Job submitted for Running with seq_len=$seq_len pred_len=$pred_len"
     done
 done

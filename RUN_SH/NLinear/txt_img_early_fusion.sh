@@ -1,4 +1,4 @@
-lamda=0.1
+Lambda=0.1
 
 seq_lens='3'
 pred_lens='3'
@@ -23,7 +23,7 @@ if [ ! -d "./logs/NLinear/txt_img_early_fusion" ]; then
     mkdir ./logs/NLinear/txt_img_early_fusion
 fi
 
-# Loop through lamda values
+# Loop through Lambda values
 for seq_len in $seq_lens
 do
     echo "Running with seq_len=$seq_len"
@@ -46,9 +46,9 @@ do
         --supper $supper\
         --seq_len $seq_len \
         --pred_len $pred_len \
-        --lamda $lamda \
+        --Lambda $Lambda \
         --checkpoints "NLinear/txt_img_early_fusion" \
-        --itr 1 --batch_size 32 --learning_rate 0.005 >logs/NLinear/txt_img_early_fusion/$model_name'_'weight_$seq_len'_'$pred_len'_'$features"_"$breakfast$lunch$supper"_l_"$lamda.log
+        --itr 1 --batch_size 32 --learning_rate 0.005 >logs/NLinear/txt_img_early_fusion/$model_name'_'weight_$seq_len'_'$pred_len'_'$features"_"$breakfast$lunch$supper"_l_"$Lambda.log
         echo "Job submitted for pred_len=$pred_len"
     done
 

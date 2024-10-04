@@ -28,7 +28,7 @@ if [ ! -d "./logs/PatchTST/S" ]; then
     mkdir ./logs/PatchTST/S
 fi
 
-# Loop through lamda values
+
 for seq_len in $seq_lens
 do
     for pred_len in $pred_lens
@@ -62,6 +62,6 @@ do
             --checkpoints "PatchTST/S" \
             --itr 1 --batch_size 32 --learning_rate 0.005 >logs/PatchTST/S/$model_name'_'weight_$seq_len'_'$pred_len'_'$features'_depth_'$e_layers'_d_model'$d_model'_nhead'$h'd_ff'$d_ff.log
         
-        echo "Job submitted for pred_len = $pred_len"
+        echo "Job submitted for Running with seq_len=$seq_len pred_len=$pred_len"
     done
 done

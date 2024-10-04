@@ -76,7 +76,7 @@ class Exp_Main(Exp_Basic):
         return total_loss
 
     def train(self, setting):
-        lamda = self.args.lamda
+        Lambda = self.args.Lambda
         train_data, train_loader = self._get_data(flag='train')
         if not self.args.train_only:
             vali_data, vali_loader = self._get_data(flag='val')
@@ -137,7 +137,7 @@ class Exp_Main(Exp_Basic):
                     w = (outputs[:, :, -1:]-batch_y[:, :, -1:]) ** 2
                     L_weight = w
                     L_diet = (1/3) * (sum(m_list))
-                    loss = lamda * L_weight + (1- lamda) * L_diet
+                    loss = Lambda * L_weight + (1- Lambda) * L_diet
                     loss = loss.sum() / (outputs.shape[0] * outputs.shape[1])
 
                 else: 
@@ -284,7 +284,7 @@ class Exp_Main(Exp_Basic):
                 modal = "img_txt_early"
         os.makedirs(r_path, exist_ok=True)
         result_path = os.path.join(r_path, self.args.model + "_" + modal + "_"
-                                     + strategy + '_food_' + str(self.args.breakfast) + str(self.args.lunch) + str(self.args.supper)+"_l_"+ str(self.args.lamda) + '.csv')
+                                     + strategy + '_food_' + str(self.args.breakfast) + str(self.args.lunch) + str(self.args.supper)+"_l_"+ str(self.args.Lambda) + '.csv')
         if modal == "S":
             result_path = os.path.join(r_path, self.args.model + "_" + modal + "_" + strategy + '.csv')   
 

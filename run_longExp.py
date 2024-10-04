@@ -61,7 +61,7 @@ parser.add_argument('--patchtst_individual', type=int, default=1, help='individu
 
 # Models
 parser.add_argument('--food_individual', action='store_true', default=False, help='weight of food in DLinear')
-parser.add_argument('--lamda', default=0.25, type=float, help='balance weight loss and food loss')
+parser.add_argument('--Lambda', default=0.25, type=float, help='balance weight loss and food loss')
 
 # Formers 
 parser.add_argument('--embed_type', type=int, default=0, help='0: default 1: value embedding + temporal embedding + positional embedding 2: value embedding + temporal embedding 3: value embedding + positional embedding 4: value embedding')
@@ -117,7 +117,7 @@ if args.is_training:
                 args.breakfast,
                 args.lunch,
                 args.supper,
-                args.lamda)
+                args.Lambda)
             if args.features == "S":
                 setting = '{}_f{}_s{}_p{}'.format(
                     args.model,
@@ -140,7 +140,7 @@ if args.is_training:
                 args.breakfast,
                 args.lunch,
                 args.supper,
-                args.lamda)
+                args.Lambda)
             if args.features == "S":
                 setting = '{}_f{}_s{}_p{}_depth{}_d_model{}_nhead{}_dff{}'.format(
                     args.model,
@@ -175,7 +175,7 @@ else:
             args.breakfast,
             args.lunch,
             args.supper,
-            args.lamda)
+            args.Lambda)
         if args.features == "S":
             setting = '{}_f{}_s{}_p{}'.format(
                 args.model,
@@ -198,7 +198,7 @@ else:
             args.breakfast,
             args.lunch,
             args.supper,
-            args.lamda)
+            args.Lambda)
         if args.features == "S":
             setting = '{}_f{}_s{}_p{}_depth{}_d_model{}_nhead{}_dff{}'.format(
                 args.model,

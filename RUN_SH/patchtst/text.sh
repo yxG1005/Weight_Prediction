@@ -1,4 +1,4 @@
-lamda=0.5
+Lambda=0.5
 seq_lens="3 5"
 pred_lens="3 5"
 model_name="PatchTST"
@@ -28,7 +28,7 @@ if [ ! -d "./logs/PatchTST/txt" ]; then
     mkdir ./logs/PatchTST/txt
 fi
 
-# Loop through lamda values
+# Loop through Lambda values
 for seq_len in $seq_lens
 do
     for pred_len in $pred_lens
@@ -36,7 +36,7 @@ do
         echo "Running with seq_len=$seq_len pred_len=$pred_len"
         python -u run_longExp.py \
             --is_training 1 \
-            --lamda $lamda \
+            --Lambda $Lambda \
             --root_path ./dataset/ \
             --data_path data.csv \
             --model_id weight \
@@ -61,8 +61,8 @@ do
             --patch_len 3\
             --stride 1\
             --checkpoints "PatchTST/txt" \
-            --itr 1 --batch_size 32 --learning_rate 0.005 >logs/PatchTST/txt/$model_name'_'weight_$seq_len'_'$pred_len'_'$features'_depth_'$e_layers'_d_model'$d_model'_nhead'$h'd_ff'$d_ff"_l_"$lamda.log
+            --itr 1 --batch_size 32 --learning_rate 0.005 >logs/PatchTST/txt/$model_name'_'weight_$seq_len'_'$pred_len'_'$features'_depth_'$e_layers'_d_model'$d_model'_nhead'$h'd_ff'$d_ff"_l_"$Lambda.log
         
-        echo "Job submitted for pred_len=$pred_len"
+        echo "Job submitted for Running with seq_len=$seq_len pred_len=$pred_len"
     done
 done
