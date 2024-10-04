@@ -1,7 +1,7 @@
 Lambda=0.1
 
-seq_lens='3'
-pred_lens='5'
+seq_lens='5'
+pred_lens='7'
 model_name="NLinear"
 features="M"
 breakfast=1
@@ -25,8 +25,7 @@ fi
 # Loop through Lambda values
 for seq_len in $seq_lens
 do
-    echo "Running with seq_len=$seq_len"
-    
+
     for pred_len in $pred_lens
     do
         echo "Running with seq_len=$seq_len pred_len=$pred_len"

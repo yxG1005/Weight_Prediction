@@ -1,6 +1,6 @@
-Lambda=0.25
-seq_lens="3 5"
-pred_lens="3 5 7"
+Lambda=0.1
+seq_lens="3"
+pred_lens="5"
 model_name="PatchTST"
 features="M"
 
@@ -60,7 +60,7 @@ do
             --patch_len 3\
             --stride 1\
             --checkpoints "PatchTST/lmm" \
-            --itr 1 --batch_size 32 --learning_rate 0.005 >logs/PatchTST/lmm/$model_name'_'weight_$seq_len'_'$pred_len'_'$features'_depth_'$e_layers'_d_model'$d_model'_nhead'$h'd_ff'$d_ff"_l_"$Lambda.log
+            --itr 1 --batch_size 32 --learning_rate 0.005 >logs/PatchTST/lmm/$model_name'_'weight_$seq_len'_'$pred_len'_'$features'_depth_'$e_layers'_d_model'$d_model'_nhead'$heads'd_ff'$d_ff"_l_"$Lambda.log
         
         echo "Job submitted for Running with seq_len=$seq_len pred_len=$pred_len"
     done

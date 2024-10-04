@@ -5,7 +5,7 @@ model_name="PatchTST"
 features="M"
 
 e_layers=1
-d_model=17
+d_model=16
 heads=2
 d_ff=32
 
@@ -59,7 +59,7 @@ do
             --patch_len 3\
             --stride 1\
             --checkpoints "PatchTST/img" \
-            --itr 1 --batch_size 32 --learning_rate 0.005 >logs/PatchTST/img/$model_name'_'weight_$seq_len'_'$pred_len'_'$features'_depth_'$e_layers'_d_model'$d_model'_nhead'$h'd_ff'$d_ff"_l_"$Lambda.log
+            --itr 1 --batch_size 32 --learning_rate 0.005 >logs/PatchTST/img/$model_name'_'weight_$seq_len'_'$pred_len'_'$features'_depth_'$e_layers'_d_model'$d_model'_nhead'$heads'd_ff'$d_ff"_l_"$Lambda.log
         
         echo "Job submitted for Running with seq_len=$seq_len pred_len=$pred_len"
     done

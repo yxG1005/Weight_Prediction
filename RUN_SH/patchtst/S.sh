@@ -60,7 +60,7 @@ do
             --patch_len 3\
             --stride 1\
             --checkpoints "PatchTST/S" \
-            --itr 1 --batch_size 32 --learning_rate 0.005 >logs/PatchTST/S/$model_name'_'weight_$seq_len'_'$pred_len'_'$features'_depth_'$e_layers'_d_model'$d_model'_nhead'$h'd_ff'$d_ff.log
+            --itr 1 --batch_size 32 --learning_rate 0.005 >logs/PatchTST/S/$model_name'_'weight_$seq_len'_'$pred_len'_'$features'_depth_'$e_layers'_d_model'$d_model'_nhead'$heads'd_ff'$d_ff.log
         
         echo "Job submitted for Running with seq_len=$seq_len pred_len=$pred_len"
     done

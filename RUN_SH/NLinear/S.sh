@@ -24,8 +24,7 @@ fi
 
 for seq_len in $seq_lens
 do
-    echo "Running with seq_len=$seq_len"
-    
+
     for pred_len in $pred_lens
     do
         echo "Running with seq_len=$seq_len pred_len=$pred_len"

@@ -29,7 +29,7 @@ parser.add_argument('--lunch', type=int, required=True, default=0, help='whether
 parser.add_argument('--supper', type=int, required=True, default=0, help='whether to add supper')
 parser.add_argument('--root_path', type=str, default='dataset', help='root path of the data file')
 parser.add_argument('--image_root', type=str, default='/share/test/yxgui/', help='Root path to the DietDiary, update to your own path')
-parser.add_argument('--feature_path', type=str, default='/features', help='path to the feature file')
+parser.add_argument('--feature_path', type=str, default='./features', help='path to the feature file')
 parser.add_argument('--data_path', type=str, default='data.csv', help='data file')
 parser.add_argument('--features', type=str, default='M',
                     help='forecasting task, options:[M, S]; M:multivariate predict multivariate, S:univariate predict univariate')
