@@ -18,28 +18,18 @@ pip install -r requirements.txt
 ```
 
 ### 2. Data Preparation
-Open the  [Google Drive](https://drive.google.com/drive/folders/1XYkdJAlY-PIPd3MQWNnX9jlOvOs2RZ36?usp=sharing) and download files as following:
+* Open the [Google Drive](https://drive.google.com/drive/folders/1woo7lQxdfSdojJW6agSBoenYyCUQ1Dof?usp=sharing) and download dataet.
 ```python
-Weight_Prediction
-├── dataset
-│   ├── data.csv
-│   ├── predict_ingr.json
+mkdir ./dataset
 ```
-The above two documents are already included in this repo.  
+Please put the **data.csv** and **predict_ingr.json** in the `./dataset`.
+Please download and unzip the DietDiary.zip to your directory, and update the *--image_root* argument in `run_longExp.py` to your image path.
 
+* (Optional) Download the feature files from [feature_files](https://drive.google.com/drive/folders/1XYkdJAlY-PIPd3MQWNnX9jlOvOs2RZ36). Then put **LTSF-img-npy**, **LTSF-txt-npy** and **LTSF-txt-from-img-npy** to `./features`. 
 ```python
-feature path
-├── LTSF-img-npy              #image feature of different settings
-├── LTSF-txt-npy              #ingredients(from users) feature of different settings
-├── LTSF-txt-from-img-npy     #ingredients(from ingredients prediction model) feature of different settings
+mkdir ./features
 ```
-Please download the three feature documents mentioned above to your directory, and update the *--feature_path* argument in `run_longExp.py` to your feature path.
-
-```python
-image path
-├── DietDiary.zip
-```
-Please download and unzip the DietDiary dataset to your directory, and update the *--image_root* argument in `run_longExp.py` to your image path.
+If do not download, the code will create ./feature automatically and extract and save feature to this path.
 
 ### 3. Training and Evaluation
 We provide implementation of *NLienar/iTransformer/PatchTST* under the folder `./RUN_SH/`. You can reproduce the results as the following examples. Logs will be stored in `logs/`. Prediction results wiil be stored in `results/`.
