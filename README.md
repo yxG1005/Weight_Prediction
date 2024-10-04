@@ -31,13 +31,13 @@ feature path
 ├── LTSF-txt-npy              #ingredients(from users) feature of different settings
 ├── LTSF-txt-from-img-npy     #ingredients(from ingredients prediction model) feature of different settings
 ```
-Please download the three feature documents mentioned above to your directory, and update the *--feature_path* argument in **run_longExp.py** to your feature path.
+Please download the three feature documents mentioned above to your directory, and update the *--feature_path* argument in `run_longExp.py` to your feature path.
 
 ```python
 image path
 ├── DietDiary.zip
 ```
-Please download and unzip the DietDiary dataset to your directory, and update the *--image_root* argument in **run_longExp.py** to your image path.
+Please download and unzip the DietDiary dataset to your directory, and update the *--image_root* argument in `run_longExp.py` to your image path.
 
 ### 3. Training and Evaluation
 We provide implementation of *NLienar/iTransformer/PatchTST* under the folder `./RUN_SH/`. You can reproduce the results as the following examples.
@@ -61,5 +61,8 @@ sh RUN_SH/NLinear/lmm.sh
 sh RUN_SH/NLinear/txt_img_early_fusion.sh
 ```
 
+#### Notice
+* For ablation study of number of meals, simply change *breakfast/lunch/supper* argument in `RUN_SH/xxx/xx.sh` to 1 (to include the meal) or 0 (to exclude the meal).
+* For ablation study of hyper-parameter of 𝜆 
 
 
