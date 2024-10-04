@@ -7,7 +7,7 @@ Current research in food analysis primarily concentrates on tasks such as food r
 ![](.//pics//task-overview.png)
 
 ## Dataset Overview
-We introduce a novel dataset, **DietDiary**, specifically for analyzing weight in relation to food intake. DietDiary encompasses diet diary of three meals over a period of time, accompanied by daily weight measurement. This example shows data records for two participants with different weight fluctuation trends in DietDiary. The records leading to weight gain are highlighted in red. The dataset is publicly available at [Google Drive](https://drive.google.com/drive/folders/1XYkdJAlY-PIPd3MQWNnX9jlOvOs2RZ36?usp=sharing) now.
+We introduce a novel dataset, **DietDiary**, specifically for analyzing weight in relation to food intake. DietDiary encompasses diet diary of three meals over a period of time, accompanied by daily weight measurement. This example shows data records for two participants with different weight fluctuation trends in DietDiary. The records leading to weight gain are highlighted in red. The dataset is publicly available at [Google Drive](https://drive.google.com/drive/folders/1woo7lQxdfSdojJW6agSBoenYyCUQ1Dof?usp=sharing) now.
 ![](.//pics//dataset-example.png)
 
 ## Getting Started
