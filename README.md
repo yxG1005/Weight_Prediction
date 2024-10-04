@@ -4,6 +4,7 @@ This repo is the official implementation for the paper: [Navigating weight predi
 ## Introduction
 Current research in food analysis primarily concentrates on tasks such as food recognition, recipe retrieval and nutrition estimation from a single image. Nevertheless, there is a significant gap in exploring the impact of food intake on physiological indicators (e.g., weight) over time. This paper addresses this gap by introducing the **DietDiary** dataset, which encompasses daily dietary diaries and corresponding weight measurements of real users. Furthermore, we propose a novel task of weight prediction with a dietary diary that aims to leverage historical food intake and weight to predict future weights. We hope this can offer valuable insights for individuals aiming to monitor their diet and manage their weight and health effectively over the long term.
 
+
 ## Dataset Overview
 We introduce a novel dataset, **DietDiary**, specifically for analyzing weight in relation to food intake. DietDiary encompasses diet diary of three meals over a period of time, accompanied by daily weight measurement. This example shows data records for two participants with different weight fluctuation trends in DietDiary. The records leading to weight gain are highlighted in red. The dataset is publicly available at [Google Drive](https://drive.google.com/drive/folders/1XYkdJAlY-PIPd3MQWNnX9jlOvOs2RZ36?usp=sharing) now.
 ![](.//pics//dataset-example.png)
@@ -40,7 +41,7 @@ image path
 Please download and unzip the DietDiary dataset to your directory, and update the *--image_root* argument in `run_longExp.py` to your image path.
 
 ### 3. Training and Evaluation
-We provide implementation of *NLienar/iTransformer/PatchTST* under the folder `./RUN_SH/`. You can reproduce the results as the following examples.
+We provide implementation of *NLienar/iTransformer/PatchTST* under the folder `./RUN_SH/`. You can reproduce the results as the following examples. Logs will be stored in `logs/`. Prediction results wiil be stored in `results/`.
 
 To train and evaluate the baseline *iTransformer* model:
 ```python
@@ -62,7 +63,13 @@ sh RUN_SH/NLinear/txt_img_early_fusion.sh
 ```
 
 #### Notice
-* For ablation study of number of meals, simply change *breakfast/lunch/supper* argument in `RUN_SH/xxx/xx.sh` to 1 (to include the meal) or 0 (to exclude the meal).
-* For ablation study of hyper-parameter of 𝜆 
+* For ablation study of number of meals, simply change *breakfast/lunch/supper* argument in `RUN_SH/model_name/.sh` to 1 (to include the meal) or 0 (to exclude the meal).
+* For ablation study of hyper-parameter of 𝜆, set *Lambda* argument in `RUN_SH/model_name/.sh`.
+* For only evaluation, set *is_training* argument in `RUN_SH/model_name/.sh` as 0.
+
+## Results
+
+
+
 
 
