@@ -28,8 +28,8 @@ parser.add_argument('--breakfast', type=int, required=True, default=0, help='whe
 parser.add_argument('--lunch', type=int, required=True, default=0, help='whether to add lunch')
 parser.add_argument('--supper', type=int, required=True, default=0, help='whether to add supper')
 parser.add_argument('--root_path', type=str, default='dataset', help='root path of the data file')
-parser.add_argument('--image_root', type=str, default='/share/test/yxgui/', help='change to your path ')
-parser.add_argument('--feature_path', type=str, default='/share/ckpt/guiyinxuan/', help='change to your path ')
+parser.add_argument('--image_root', type=str, default='/share/test/yxgui/', help='Root path to the DietDiary, update to your own path')
+parser.add_argument('--feature_path', type=str, default='/share/ckpt/yxgui/', help='Root path to the feature file, update to your own path')
 parser.add_argument('--data_path', type=str, default='data.csv', help='data file')
 parser.add_argument('--features', type=str, default='M',
                     help='forecasting task, options:[M, S]; M:multivariate predict multivariate, S:univariate predict univariate')
@@ -37,7 +37,7 @@ parser.add_argument('--target', type=str, default='weight', help='target feature
 parser.add_argument('--freq', type=str, default='d',
                     help='freq for time features encoding, options:[s:secondly, t:minutely, h:hourly, d:daily, b:business days, w:weekly, m:monthly], you can also use more detailed freq like 15min or 3h')
 parser.add_argument('--checkpoints', type=str, default='iTransformer/lmm', help='location of model checkpoints')
-parser.add_argument('--checkpoints_root', type=str, default='/share/ckpt/guiyinxuan/LTSF-ckpt', help='checkpoints root path, change to your path')
+parser.add_argument('--checkpoints_root', type=str, default='/share/ckpt/guiyinxuan/LTSF-ckpt', help='checkpoints root path, update to your own path')
 
 # forecasting task
 parser.add_argument('--seq_len', type=int, default=5, help='input sequence length')
