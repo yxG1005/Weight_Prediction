@@ -7,7 +7,7 @@ Current research in food analysis primarily concentrates on tasks such as food r
 ![](.//pics//task-overview.png)
 
 ## Dataset Overview
-We introduce a novel dataset, **DietDiary**, specifically for analyzing weight in relation to food intake. DietDiary encompasses diet diary of three meals over a period of time, accompanied by daily weight measurement. This example shows data records for two participants with different weight fluctuation trends in DietDiary. The records leading to weight gain are highlighted in red. The dataset is publicly available at [Google Drive](https://drive.google.com/drive/folders/1woo7lQxdfSdojJW6agSBoenYyCUQ1Dof?usp=sharing) now.
+We introduce a novel dataset, **DietDiary**, specifically for analyzing weight in relation to food intake. DietDiary encompasses diet diary of three meals over a period of time, accompanied by daily weight measurement. This example shows data records for two participants with different weight fluctuation trends in DietDiary. The records leading to weight gain are highlighted in red. The dataset is publicly available at [Google Drive](https://drive.google.com/drive/folders/134Y0rgylxAP37DFOx6whhOoz45abA4sr?usp=sharing) now.
 ![](.//pics//dataset-example.png)
 
 ## Getting Started
@@ -18,14 +18,14 @@ pip install -r requirements.txt
 ```
 
 ### 2. Data Preparation
-* Open the [Google Drive](https://drive.google.com/drive/folders/1woo7lQxdfSdojJW6agSBoenYyCUQ1Dof?usp=sharing) and download dataet.
+* Open the [Google Drive](https://drive.google.com/drive/folders/134Y0rgylxAP37DFOx6whhOoz45abA4sr?usp=sharing) and download dataet.
 ```python
 mkdir ./dataset
 ```
 Please put the **data.csv** and **predict_ingr.json** in the `./dataset`.
 Please download and unzip the DietDiary.zip to your directory, and update the *--image_root* argument in `run_longExp.py` to your image path.
 
-* (Optional) Download the feature files from [feature_files](https://drive.google.com/drive/folders/1XYkdJAlY-PIPd3MQWNnX9jlOvOs2RZ36). Then put **LTSF-img-npy**, **LTSF-txt-npy** and **LTSF-txt-from-img-npy** to `./features`. 
+* (Optional) Download the feature files from [feature_files](https://drive.google.com/drive/folders/1EdRdQysgzQetPp7WSSnmUDrTyGGV-4wz?usp=sharing). Then put **LTSF-img-npy**, **LTSF-txt-npy** and **LTSF-txt-from-img-npy** to `./features`. 
 ```python
 mkdir ./features
 ```
