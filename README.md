@@ -18,7 +18,7 @@ pip install -r requirements.txt
 ```
 
 ### 2. Data Preparation
-* Open the [Google Drive](https://drive.google.com/drive/folders/134Y0rgylxAP37DFOx6whhOoz45abA4sr?usp=sharing) and download dataet.
+* Open the [Google Drive](https://drive.google.com/drive/folders/134Y0rgylxAP37DFOx6whhOoz45abA4sr?usp=sharing) and download data.
 ```python
 mkdir ./dataset
 ```
