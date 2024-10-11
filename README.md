@@ -1,5 +1,5 @@
 # Navigating weight prediction with diet diary
-This repo is the official implementation for the paper: [Navigating weight prediction with diet diary](https://www.arxiv.org/abs/2408.05445). [[website]](https://yxg1005.github.io/weight-prediction)
+This repo is the official implementation for the oral paper published on ACM Multimedia 2024: [Navigating weight prediction with diet diary](https://www.arxiv.org/abs/2408.05445). [[website]](https://yxg1005.github.io/weight-prediction)
 
 ## Introduction
 Current research in food analysis primarily concentrates on tasks such as food recognition, recipe retrieval and nutrition estimation from a single image. Nevertheless, there is a significant gap in exploring the impact of food intake on physiological indicators (e.g., weight) over time. This paper addresses this gap by introducing the **DietDiary** dataset, which encompasses daily dietary diaries and corresponding weight measurements of real users. Furthermore, we propose a novel task of weight prediction with a dietary diary that aims to leverage historical food intake and weight to predict future weights. We hope this can offer valuable insights for individuals aiming to monitor their diet and manage their weight and health effectively over the long term.
@@ -66,11 +66,10 @@ Compared to models that do not incorporate food intake information, our method c
 ## Citation
 If you find this repository useful for your work, please consider citing it as follows:
 ```python
-@article{gui2024navigating,
+@inproceedings{gui2024navigating,
   title={Navigating Weight Prediction with Diet Diary},
   author={Gui, Yinxuan and Zhu, Bin and Chen, Jingjing and Ngo, Chong-Wah and Jiang, Yu-Gang},
-  journal={arXiv preprint arXiv:2408.05445},
-  year={2024}
+  booktitle={ACM Multimedia 2024}
 }
 ```
 
