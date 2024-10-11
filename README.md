@@ -4,7 +4,11 @@ This repo is the official implementation for the oral paper published on ACM Mul
 ## Introduction
 Current research in food analysis primarily concentrates on tasks such as food recognition, recipe retrieval and nutrition estimation from a single image. Nevertheless, there is a significant gap in exploring the impact of food intake on physiological indicators (e.g., weight) over time. This paper addresses this gap by introducing the **DietDiary** dataset, which encompasses daily dietary diaries and corresponding weight measurements of real users. Furthermore, we propose a novel task of weight prediction with a dietary diary that aims to leverage historical food intake and weight to predict future weights. We hope this can offer valuable insights for individuals aiming to monitor their diet and manage their weight and health effectively over the long term.
 
-![](.//pics//task-overview.png)
+<p align="center">
+  <img src=".//pics//task-overview-1.png" alt="Weight Prediction Model" />
+</p>
+
+1
 
 ## Dataset Overview
 We introduce a novel dataset, **DietDiary**, specifically for analyzing weight in relation to food intake. DietDiary encompasses diet diary of three meals over a period of time, accompanied by daily weight measurement. This example shows data records for two participants with different weight fluctuation trends in DietDiary. The records leading to weight gain are highlighted in red. The dataset is publicly available at [Google Drive](https://drive.google.com/drive/folders/134Y0rgylxAP37DFOx6whhOoz45abA4sr?usp=sharing) now.
