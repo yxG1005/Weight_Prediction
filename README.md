@@ -8,8 +8,6 @@ Current research in food analysis primarily concentrates on tasks such as food r
   <img src=".//pics//task-overview-1.png" alt="Weight Prediction Model" />
 </p>
 
-1
-
 ## Dataset Overview
 We introduce a novel dataset, **DietDiary**, specifically for analyzing weight in relation to food intake. DietDiary encompasses diet diary of three meals over a period of time, accompanied by daily weight measurement. This example shows data records for two participants with different weight fluctuation trends in DietDiary. The records leading to weight gain are highlighted in red. The dataset is publicly available at [Google Drive](https://drive.google.com/drive/folders/134Y0rgylxAP37DFOx6whhOoz45abA4sr?usp=sharing) now.
 ![](.//pics//dataset-example.png)
