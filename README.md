@@ -50,9 +50,6 @@ sh RUN_SH/NLinear/text.sh
 
 # NLinear model with diet information from ingredients(ingredients prediction model)
 sh RUN_SH/NLinear/lmm.sh
-
-# NLinear model with diet information from both images and ingredients(users)
-sh RUN_SH/NLinear/txt_img_early_fusion.sh
 ```
 
 #### Notice
