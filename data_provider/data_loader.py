@@ -482,7 +482,7 @@ class Dataset_Weight(Dataset):
 
         return text_inputs
     
-    def get_annotation(self, temp_df, k, meal):#返回一行的某一餐标注
+    def get_annotation(self, temp_df, k, meal):
         meal_list = []
         addr, tag = str.split(temp_df.iloc[k][meal], "|||")
         for x in str.split(tag, " "):

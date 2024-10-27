@@ -13,12 +13,12 @@ class UMRL(nn.Module):
         self.breakfast = configs.breakfast
         self.lunch = configs.lunch
         self.supper = configs.supper
-        self.meal_num = [self.breakfast, self.lunch, self.supper].count(1)#有几餐参与训练
+        self.meal_num = [self.breakfast, self.lunch, self.supper].count(1)
         print("number of meals",self.meal_num)
 
         if self.food_individual:
             self.food_linear = nn.ModuleList()
-            for i in range(self.meal_num):#三餐中有几餐参与训练
+            for i in range(self.meal_num):
                 self.food_linear.append(nn.Linear(512, 1))
         else:
             self.food_linear = nn.Linear(512, 1)
@@ -27,7 +27,7 @@ class UMRL(nn.Module):
 
         meal_list = []
         for i in range(self.meal_num):
-            meal_list.append(x[:, :, i*512: (i+1)*512])#每一餐都是 [32,seq_len,512]
+            meal_list.append(x[:, :, i*512: (i+1)*512])
 
         output = torch.zeros([x.size(0), x.size(1), self.meal_num],dtype=x.dtype).to(x.device)#[32,seq_len,meal_num]
 
@@ -53,7 +53,7 @@ class early_fusion_UMRL(nn.Module):
         self.breakfast = configs.breakfast
         self.lunch = configs.lunch
         self.supper = configs.supper
-        self.meal_num = [self.breakfast, self.lunch, self.supper].count(1)#有几餐参与训练
+        self.meal_num = [self.breakfast, self.lunch, self.supper].count(1)
         print("number of meals",self.meal_num)
 
 
@@ -64,11 +64,11 @@ class early_fusion_UMRL(nn.Module):
 
         img_meal_list = []
         for i in range(self.meal_num, self.meal_num * 2):
-            img_meal_list.append(x[:, :, i*512: (i+1)*512])#每一餐都是 [32,seq_len,512]
+            img_meal_list.append(x[:, :, i*512: (i+1)*512])
 
         txt_meal_list = []
         for i in range(self.meal_num):
-            txt_meal_list.append(x[:, :, i*512: (i+1)*512])#每一餐都是 [32,seq_len,512]
+            txt_meal_list.append(x[:, :, i*512: (i+1)*512])
 
         img_output = torch.zeros([x.size(0), x.size(1), self.meal_num],dtype=x.dtype).to(x.device)#[32,seq_len,meal_num]
         txt_output = torch.zeros([x.size(0), x.size(1), self.meal_num],dtype=x.dtype).to(x.device)#[32,seq_len,meal_num]
@@ -92,15 +92,10 @@ class Model(nn.Module):
         super(Model, self).__init__()
         self.seq_len = configs.seq_len
         self.pred_len = configs.pred_len
-        # self.channels = configs.enc_in
         self.features = configs.features
         self.image = configs.image
         self.text = configs.text
-        # self.variation = configs.variation
-        # self.mix_variation = configs.mix_variation
         self.fusion = configs.fusion
-        
-    
 
         self.Linear = nn.Linear(self.seq_len, self.pred_len)
 
@@ -121,34 +116,13 @@ class Model(nn.Module):
         if (self.features == "M" and self.image) or (self.features == "M" and self.text):
             food_output = self.food_mapping(x)
 
-
-            # if self.variation :
-            #     variation = x[:, :, -2:-1]
-            #     weight = torch.cat((food_output, variation, weight), axis=2)
-
-            # else:
             weight = torch.cat((food_output, weight), axis=2)
-
-        # elif self.features == "M" and self.variation:
-        #     weight = torch.cat((x[:, :, :-1], weight), axis = 2)
-
-        # print("送入Nlinear的数据是", weight)
-
 
         weight = self.Linear(weight.permute(0,2,1)).permute(0,2,1)
 
+        y = weight[:, :, -1:] + seq_last 
+        y = torch.cat((weight[:, :, :-1], y) ,axis=2) 
 
-
-        y = weight[:, :, -1:] + seq_last #输出的最后一列需要加回减掉的最后一行
-
-        y = torch.cat((weight[:, :, :-1], y) ,axis=2) #再将输出的前面几列和已经加回的那一部分cat
-
-        #可能交互一下变量
-        # if self.features == "M" and self.mix_variation:
-        #     y = self.mix_linear(y)
-        
-
-        # print("y size", y, y.shape)         
 
         return y # [Batch, Output length, Channel]  
     

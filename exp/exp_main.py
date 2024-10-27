@@ -330,7 +330,7 @@ class Exp_Main(Exp_Basic):
 
             with torch.no_grad():
                 food = history_GT_food
-                for item in range(temp_df.shape[0] + 1 - sample_len):#一个individual能贡献的样本数
+                for item in range(temp_df.shape[0] + 1 - sample_len):
                     if 'Linear' in self.args.model or 'TST' in self.args.model:
                         output = self.model(input)
                     elif self.args.model == "iTransformer":#itransformer

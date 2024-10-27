@@ -35,7 +35,7 @@ class UMRL(nn.Module):
 
         meal_list = []
         for i in range(self.meal_num):
-            meal_list.append(x[:, :, i*512: (i+1)*512])#每一餐都是 [32,seq_len,512]
+            meal_list.append(x[:, :, i*512: (i+1)*512])
 
         output = torch.zeros([x.size(0), x.size(1), self.meal_num],dtype=x.dtype).to(x.device)#[32,seq_len,meal_num]
 

@@ -16,7 +16,7 @@ class UMRL(nn.Module):
         self.breakfast = configs.breakfast
         self.lunch = configs.lunch
         self.supper = configs.supper
-        self.meal_num = [self.breakfast, self.lunch, self.supper].count(1)#有几餐参与训练
+        self.meal_num = [self.breakfast, self.lunch, self.supper].count(1)
         print("number of meals",self.meal_num)
 
         if self.food_individual:

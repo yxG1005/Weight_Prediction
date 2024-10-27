@@ -26,7 +26,7 @@ class PatchTST_backbone(nn.Module):
         
         # RevIn
         self.revin = revin
-        #标准化层，包括减去最后一个值/减去平均值，再除以方差
+ 
         if self.revin: self.revin_layer = RevIN(c_in, affine=affine, subtract_last=subtract_last)
         
         # Patching
