@@ -66,7 +66,7 @@ parser.add_argument('--Lambda', default=0.25, type=float, help='balance weight l
 # Formers 
 parser.add_argument('--embed_type', type=int, default=0, help='0: default 1: value embedding + temporal embedding + positional embedding 2: value embedding + temporal embedding 3: value embedding + positional embedding 4: value embedding')
 parser.add_argument('--enc_in', type=int, default=4, help='encoder input size') # only used in PatachTST, equals to (number of diets)+1
-parser.add_argument('--d_model', type=int, default=512, help='dimension of model')#transformer模型维度
+parser.add_argument('--d_model', type=int, default=512, help='dimension of model')
 parser.add_argument('--n_heads', type=int, default=8, help='num of heads')
 parser.add_argument('--e_layers', type=int, default=2, help='num of encoder layers')
 parser.add_argument('--d_layers', type=int, default=1, help='num of decoder layers')
