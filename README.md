@@ -66,9 +66,11 @@ Compared to models that do not incorporate food intake information, our method c
 If you find this repository useful for your work, please consider citing it as follows:
 ```python
 @inproceedings{gui2024navigating,
-  title={Navigating Weight Prediction with Diet Diary},
-  author={Gui, Yinxuan and Zhu, Bin and Chen, Jingjing and Ngo, Chong-Wah and Jiang, Yu-Gang},
-  booktitle={ACM Multimedia 2024}
+author = {Gui, Yinxuan and Zhu, Bin and Chen, Jingjing and Ngo, Chong Wah and Jiang, Yu-Gang},
+title = {Navigating Weight Prediction with Diet Diary},
+year = {2024},
+booktitle = {Proceedings of the 32nd ACM International Conference on Multimedia},
+pages = {127–136}
 }
 ```
 
